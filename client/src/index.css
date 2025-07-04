@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-100 text-secondary-900 hover:bg-secondary-200;
+  }
+  
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+  
+  .video-container {
+    @apply relative w-full h-full bg-black rounded-lg overflow-hidden;
+  }
+  
+  .video-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent;
+  }
+  
+  .video-controls {
+    @apply absolute bottom-4 left-4 right-4 flex items-end justify-between;
+  }
+  
+  .video-info {
+    @apply flex-1 text-white;
+  }
+  
+  .video-actions {
+    @apply flex flex-col items-center space-y-4;
+  }
+  
+  .action-button {
+    @apply w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Video styles */
+video {
+  @apply w-full h-full object-cover;
+}
+
+/* Loading animation */
+.loading-spinner {
+  @apply animate-spin rounded-full border-4 border-gray-300 border-t-primary-600;
+}
+
+/* Responsive video grid */
+.video-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .video-grid {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .video-container {
+    @apply aspect-[9/16] max-h-[70vh];
+  }
+}
